@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { listSessions } from '../../../lib/sessionStore';
+import { listSessions } from '../../../../lib/sessionStore';
 
 export async function GET() {
   try {

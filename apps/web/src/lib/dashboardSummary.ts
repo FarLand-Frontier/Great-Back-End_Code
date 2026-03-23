@@ -48,4 +48,3 @@ export function getDashboardSummary(): DashboardSummary {
   return fallbackSummary
 }
 
-export type { DashboardSummary, TokenUsage, TaskStatus, Health }

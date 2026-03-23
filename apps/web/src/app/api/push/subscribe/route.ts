@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { saveSubscription, validateSubscription } from '../../../lib/pushStore';
+import { saveSubscription, validateSubscription } from '../../../../lib/pushStore';
 
 export async function POST(request: Request) {
   try {

@@ -1,11 +1,20 @@
 // Admin Copy GET API Route
 // GET /api/admin/copy
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getCopy } from '../../../../lib/copyStore'
+import { checkAccess } from '../../../../lib/auth/cloudflareAccess'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const access = checkAccess(request.headers)
+    if (access.role !== 'developer') {
+      return NextResponse.json(
+        { error: 'Forbidden' },
+        { status: 403 }
+      )
+    }
+
     const copy = getCopy()
     return NextResponse.json(copy)
   } catch (error) {

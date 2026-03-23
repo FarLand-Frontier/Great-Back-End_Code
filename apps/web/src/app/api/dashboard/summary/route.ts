@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getDashboardSummary } from '../../../lib/dashboardSummary'
+import { getDashboardSummary } from '../../../../lib/dashboardSummary'
 
 /**
  * GET /api/dashboard/summary

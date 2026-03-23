@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { triggerTestPush } from '../../../lib/pushStore';
+import { triggerTestPush } from '../../../../lib/pushStore';
 
 export async function POST() {
   try {

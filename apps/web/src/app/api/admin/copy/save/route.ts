@@ -2,10 +2,19 @@
 // POST /api/admin/copy/save
 
 import { NextRequest, NextResponse } from 'next/server'
-import { saveCopy, getCopy, type UICopyContract } from '../../../../../lib/copyStore'
+import { saveCopy, type UICopyContract } from '../../../../../lib/copyStore'
+import { checkAccess } from '../../../../../lib/auth/cloudflareAccess'
 
 export async function POST(request: NextRequest) {
   try {
+    const access = checkAccess(request.headers)
+    if (access.role !== 'developer') {
+      return NextResponse.json(
+        { success: false, error: 'Forbidden' },
+        { status: 403 }
+      )
+    }
+
     const body: unknown = await request.json()
 
     // Validate body is a proper UICopyContract
@@ -28,7 +37,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      copy: result.copy
+      copy: result.copy,
     })
   } catch (error) {
     console.error('Error saving copy:', error)

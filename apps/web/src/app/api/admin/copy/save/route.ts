@@ -2,7 +2,7 @@
 // POST /api/admin/copy/save
 
 import { NextRequest, NextResponse } from 'next/server'
-import { saveCopy, getCopy, type UICopyContract } from '../../../lib/copyStore'
+import { saveCopy, getCopy, type UICopyContract } from '../../../../../lib/copyStore'
 
 export async function POST(request: NextRequest) {
   try {

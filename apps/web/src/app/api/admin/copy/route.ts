@@ -2,7 +2,7 @@
 // GET /api/admin/copy
 
 import { NextResponse } from 'next/server'
-import { getCopy } from '../../../lib/copyStore'
+import { getCopy } from '../../../../lib/copyStore'
 
 export async function GET() {
   try {
